@@ -11,23 +11,21 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from datetime import timedelta
+
 from pathlib import Path
-from os import getenv
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(dotenv_path=BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-2m8uey7y9mu-p817t8n*r4ic&3-v#y4!k_jq3y=kcilw!ny-2e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -88,10 +86,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': getenv('DATABASE_ENGINE'),
-        'NAME': getenv('DATABASE_NAME'),
-        'USER': getenv('DATABASE_USER'),
-        'PASSWORD': getenv('DATABASE_PASSWORD'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'habits',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
     }
 }
 
@@ -120,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = getenv('TIME_ZONE')
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -160,12 +158,12 @@ SIMPLE_JWT = {
 }
 
 # Настройки для email
-EMAIL_BACKEND = getenv('EMAIL_BACKEND')
-EMAIL_HOST = getenv('EMAIL_HOST')
-EMAIL_PORT = getenv('EMAIL_PORT')
-EMAIL_USE_SSL = getenv('EMAIL_USE_SSL') == '1'
-EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = '465'
+EMAIL_USE_SSL = 'True'
+EMAIL_HOST_USER = 'VhilSaR@yandex.ru'
+EMAIL_HOST_PASSWORD = 'oaaxuwdipoilnxzt'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
@@ -180,9 +178,9 @@ SWAGGER_SETTINGS = {
     }
 }
 
-CELERY_BROKER_URL = getenv('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = getenv('CELERY_RESULT_BACKEND')
-CELERY_TIMEZONE = getenv('TIME_ZONE')
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_TIMEZONE = 'UTC'
 
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
@@ -191,12 +189,8 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-CORS_ALLOWED_ORIGINS = [
-    getenv('FRONTEND_URL'),
-]
+CORS_ALLOWED_ORIGINS = []
 
-CORS_TRUSTED_ORIGINS = [
-    getenv('FRONTEND_URL'),
-]
+CORS_TRUSTED_ORIGINS = []
 
-CORS_ALLOW_ALL_ORIGINS = getenv('CORS_ALLOW_ALL_ORIGINS') == '1'
+CORS_ALLOW_ALL_ORIGINS = True
