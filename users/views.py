@@ -24,4 +24,5 @@ class UserCreateAPIView(CreateAPIView):
     def perform_create(self, serializer):
         user = serializer.save()
         user.set_password(serializer.data['password'])
+        user.telegram_id = serializer.data['telegram_id']
         user.save()
