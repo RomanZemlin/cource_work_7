@@ -1,5 +1,4 @@
 import datetime
-from os import getenv
 
 import requests
 from celery import shared_task
@@ -34,7 +33,7 @@ def habits_worker():
 
 def send_message_to_telegram(message, telegram_id):
     chat_id = telegram_id
-    bot_api_key = getenv('TELEGRAM_BOT_API_KEY')
+    bot_api_key = '6367050676:AAGr2ek0NkpbsqFa1MRag1Ad0qgUq4Y0Wso'
     params = {'chat_id': chat_id, 'text': message}
     url = f'https://api.telegram.org/bot{bot_api_key}/sendMessage'
     requests.post(url, params=params)
