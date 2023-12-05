@@ -13,11 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from datetime import timedelta
 from os import getenv
 from pathlib import Path
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(dotenv_path=BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -91,7 +89,8 @@ DATABASES = {
         'ENGINE': getenv('DATABASE_ENGINE'),
         'NAME': getenv('DATABASE_NAME'),
         'USER': getenv('DATABASE_USER'),
-        'PASSWORD': getenv('DATABASE_PASSWORD')
+        'PASSWORD': getenv('DATABASE_PASSWORD'),
+        'HOST': 'db'
     }
 }
 
