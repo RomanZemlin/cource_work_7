@@ -85,8 +85,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': getenv('DATABASE_ENGINE'),
-        'NAME': getenv('DATABASE_NAME'),
-        'USER': getenv('DATABASE_USER'),
+        'NAME': getenv('POSTGRES_DB'),
+        'USER': getenv('POSTGRES_USER'),
         'PASSWORD': getenv('POSTGRES_PASSWORD'),
         'HOST': 'db'
     }
