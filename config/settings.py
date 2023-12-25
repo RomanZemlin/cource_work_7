@@ -187,7 +187,7 @@ CELERY_TIMEZONE = 'UTC'
 
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
-        'task': 'habit.tasks.habits_worker',
+        'task': 'habits.tasks.habits_worker',
         'schedule': timedelta(minutes=1),
     },
 }
