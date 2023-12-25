@@ -181,8 +181,8 @@ SWAGGER_SETTINGS = {
     }
 }
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 CELERY_TIMEZONE = 'UTC'
 
 CELERY_BEAT_SCHEDULE = {
@@ -199,9 +199,4 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_TRUSTED_ORIGINS = [
 
-]
-
-CORS_ALLOWED_ORIGINS = [
-    'http://example.com',
-    'https://example.com',
 ]
